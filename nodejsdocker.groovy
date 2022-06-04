@@ -1,6 +1,6 @@
 job('NodeJS Docker example') {
     scm {
-        git('git://github.com/gvenkat09/nodejs-app.git') {  node -> // is hudson.plugins.git.GitSCM
+        git('https://github.com/Skiran9/nodejs-app.git') {  node -> // is hudson.plugins.git.GitSCM
             node / gitConfigName('DSL User')
             node / gitConfigEmail('jenkins-dsl@gmail.com')
         }
@@ -14,9 +14,9 @@ job('NodeJS Docker example') {
     }
     steps {
         dockerBuildAndPublish {
-            repositoryName('gvenkat/nodejs-app')
+            repositoryName('skiran9/nodejs-app')
             tag('${GIT_REVISION,length=9}')
-            registryCredentials('dockerhub')
+            registryCredentials('dockerhub_credentials')
             forcePull(false)
             forceTag(false)
             createFingerprints(false)
